@@ -1,35 +1,24 @@
-import Image from 'next/image'
+import directus from "./lib/directus"
 
-let title = "tesdast"
-let body = "tesdast"
-let contentImage = ''
-
-async function getData() {
-  const res = await fetch('https://api.example.com/...')
-
-
-
-
-  // Recommendation: handle errors
-  if (!res.ok) {
-    // This will activate the closest `error.js` Error Boundary
-    throw new Error('Failed to fetch data')
-  }
- 
-  return res.json()
-
+async function getData(){
+  const { data } = await directus.items('Home').readByQuery();
+	return data;
 }
+// let title = "tesdast"
+// let body = "yolo"
+// let contentImage = ''
 
 
-
-export default function Home() {
+export default async function Home() {
+  const d = await getData();
   return (
     <main>
       <div className='bg-red-500 w-3/4 h-full mx-auto m-12 text-center'>
-        <h1 className='h-20'>Title goes here: <br/> <div className='w-full h-10 bg-white text-black'>{title}</div></h1>
-        <p className='h-20'>Content goes here: <br/>  <div className='w-full h-10 bg-white text-black'>{body}</div></p>
-        <img src={contentImage} alt="" />
+        <h1 className='h-20'>Title goes here: <br /> <div className='w-full h-10 bg-white text-black'>{d.title}</div></h1>
+        <p className='h-20'>Content goes here: <br />  <div className='w-full h-10 bg-white text-black'>{d.body}</div></p>
+        <img src={`${directus.url}assets/${d.hero}`} alt="not working" />
       </div>
     </main>
+
   )
 }
