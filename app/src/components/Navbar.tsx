@@ -1,8 +1,13 @@
 import Link from 'next/link';
+import { type } from 'os';
 import * as React from 'react';
 
+type NavProps = {
+  title: string
+}
 
-export default function NavBar(props) {
+
+export default function NavBar(props: NavProps) {
 
     let title = props.title
 
