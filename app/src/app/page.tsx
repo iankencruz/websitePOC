@@ -9,7 +9,8 @@ import Hero from '@/components/Hero'
 // }
 async function getData(){ // this uses graphql api to retrive data for this page
   const { data } = await directus.graphql.items('query{Home{status title body hero{id}}}')
-	return data.Home; // the data we need is nested within ({x:{}}) so this call will just send the data needed (x:{})
+	//@ts-ignore
+  return data.Home; // the data we need is nested within ({x:{}}) so this call will just send the data needed (x:{})
 }
 // let title = "tesdast"
 // let body = "yolo"
