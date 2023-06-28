@@ -17,7 +17,7 @@ export default function Page() {
             <Hero title='Hero Component' />
 
     {/* Use props to render content on left or right  */}
-      <ContentBlock textLeft={true} useImage={true} textInput="Lorem Ipsum Lorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem Ipsum IpsumLorem Ipsum IpsumLorem Ipsum"/>
+      <ContentBlock srcImage={""} textLeft={data.isLeft} useImage={true} textInput={data.body}/>
 
 		</>
 	);

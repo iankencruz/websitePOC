@@ -41,13 +41,7 @@ export default async function Home() {
       <ContentBlock srcImage={x} textLeft={data.isLeft} useImage={true} textInput={data.body}/>
 
 
-      <div className='bg-red-500 w-3/4 h-full mx-auto m-12 text-center'>
-        <h1 className='h-20'>Title goes here: <br /> <div className='w-full h-10 bg-white text-black'>{data.title}</div></h1>
-        <p className='h-20'>Content goes here: <br />  <div className='w-full h-10 bg-white text-black'>{data.body}</div></p>
-        <img src={`${directus.url}assets/${data.hero.id}`} alt="not working" />
-        
-        {/* {console.log('"${directus.url}assets/${data.hero.id}"');} */}
-      </div>
+      
     </main>
 
   )
