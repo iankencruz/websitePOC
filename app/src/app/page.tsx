@@ -35,10 +35,10 @@ export default async function Home() {
   return (
     <main>
       
-      <Hero title='Hero Component' />
+      <Hero title={data.title} />
 
     {/* Use props to render content on left or right  */}
-      <ContentBlock srcImage={x} textLeft={data.isLeft} useImage={true} textInput={data.body}/>
+      <ContentBlock srcImage={x} textLeft={data.isLeft} textInput={data.body}/>
 
 
       

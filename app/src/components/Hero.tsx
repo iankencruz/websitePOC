@@ -12,7 +12,7 @@ export default function Hero(props:HeroProp) {
 		<>
 			<div className="w-full bg-purple-200 h-[320px]">
 				<h1 className="mx-auto text-4xl text-black flex flex-row justify-center py-32 font-black">
-					Home Page {title}
+					{title}
 				</h1>
 			</div>
 		</>

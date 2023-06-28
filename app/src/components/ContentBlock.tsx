@@ -6,12 +6,14 @@ type contentProp = {
 	textLeft: boolean;
 	textInput: string;
 	srcImage: string;
+	// textTitle: string;
 };
 
 export default function ContentBlock(props: contentProp) {
 	// let contentImage = props.useImage
 	let textLeft = props.textLeft;
 	let textInput = props.textInput;
+	// let textTitle = props.textTitle;
 	let srcImage = props.srcImage;
 
 	return (
