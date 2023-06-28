@@ -3,10 +3,10 @@ import ContentBlock from '@/components/ContentBlock'
 import Hero from '@/components/Hero'
 
 
-async function getD(){ // this uses the default api
-  const { data } = await directus.items('Home').readByQuery();
-	return data;
-}
+// async function getD(){ // this uses the default api
+//   const { data } = await directus.items('Home').readByQuery();
+// 	return data;
+// }
 async function getData(){ // this uses graphql api to retrive data for this page
   const { data } = await directus.graphql.items('query{Home{isLeft title body hero{id}}}');
 	//@ts-ignore
@@ -20,8 +20,8 @@ async function getData(){ // this uses graphql api to retrive data for this page
 export default async function Home() {
   const data = await getData();
   console.log(data);
-  const d = await getD();
-  console.log("totot ", d);
+  // const d = await getD();
+  // console.log("totot ", d);
   // console.log(data.status);
   let x = "" + directus.url + "assets/" + data.hero.id  ;
   console.log(x);
