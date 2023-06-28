@@ -16,7 +16,7 @@ export default function RootLayout({
     <html lang="en">
       
       <body>
-      <NavBar title="Paysorted" />
+      <NavBar title="Proof of concept" />
         {children}
         <Footer />
       </body>

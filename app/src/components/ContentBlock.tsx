@@ -1,10 +1,12 @@
 import * as React from "react";
 import Image from "next/image";
+import { type } from "os";
 
 type contentProp = {
 	useImage: boolean;
 	textLeft: boolean;
 	textInput: string;
+	srcImage: string;
 };
 
 export default function ContentBlock(props: contentProp) {
@@ -12,6 +14,7 @@ export default function ContentBlock(props: contentProp) {
 	let textLeft = props.textLeft;
 	let textInput = props.textInput;
 	let useImage = props.useImage;
+	let srcImage = props.srcImage;
 
 	return (
 		<>
@@ -26,38 +29,37 @@ export default function ContentBlock(props: contentProp) {
 					<div className="flex    mx-auto mr-64 my-20 w-full">
 						<div className="flex flex-wrap ml-80 my-20">
 							<div className="my-20 w-96">
-								<h4>txt left = {textLeft}</h4>
-								<p>{textInput}</p>
+								<div dangerouslySetInnerHTML={{ __html: textInput }}></div>
 							</div>
 						</div>
 						{useImage && (
-							<Image
+							<img
 								className="justify-end ml-auto flex mx-auto"
-								src="/Picture1.jpg"
-								width={350}
-								height={350}
+								src={srcImage}
+								width={500}
 							/>
+							// 				<Image
+							// 				className="w-full h-full"
+							// 					src={srcImage}
+							// 					width={200}
+							// 					height={160}
+							// 					alt="alt image"
+							// 					sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw,
+							//   33vw"
+							// 				/>
 						)}
 					</div>
 				</>
 			) : (
 				<div className="flex justify-end    mx-auto mr-64 my-20 w-full">
-                    {useImage && (
-							<Image
-								className="justify-start mr-auto flex mx-auto"
-								src="/Picture1.jpg"
-								width={350}
-								height={350}
-							/>
-						)}
-				    <div className="flex flex-wrap mr-40 my-20">
-				        <div className=" my-20 mr-64 w-96">
-        					<h4>txt left = {textLeft}</h4>
-        					<p>{textInput}</p>
-        				</div>
-				    </div>
-                    
-
+					{useImage && (
+						<img className="justify-end ml-auto flex mx-auto" src={srcImage} />
+					)}
+					<div className="flex flex-wrap mr-40 my-20">
+						<div className=" my-20 mr-64 w-96">
+							<div dangerouslySetInnerHTML={{ __html: textInput }}></div>
+						</div>
+					</div>
 				</div>
 			)}
 		</>
