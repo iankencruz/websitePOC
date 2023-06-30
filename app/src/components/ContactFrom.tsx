@@ -1,23 +1,89 @@
 'use client'
 import directus from "@/app/lib/directus";
+import { useMutation } from "react-query";
 
-async function handleSubmit(e){
-    e.preventDefault(); 
+
+//@ts-ignore
+async function handleSubmit(e) {
+	e.preventDefault();
+	// const contact = directus.items('Contact');
+	const contact = directus.graphql.items('mutation{create_ContactForm_item(data:{name: "ff", email: "gg@tt.com", number : "4546", subject :"higg", message: "gg this work1})}');
 	console.log("hello there");
-    const { data } =  await directus.graphql.items('mutation{create_ContactUs_item(data:{name: "ff", email: "gg@tt.com", number : "4546", subject :"higg", message: "gg this work1"})}');
-	console.log(data);
+	// const { data } = directus.graphql.items('mutation{create_ContactForm_item(data:{name: "ff", email: "gg@tt.com", number : "4546", subject :"higg", message: "gg this work1})}');
+	// console.log(data);
+	// const a = await contact.readOne(1);
+	console.log(contact);
 }
 
+// const setData = async (mutation, data = {}, additionalPath = '') => {
+// 	const query = JSON.stringify({
+// 	  query: mutation,
+// 	  variables: data
+// 	});
+  
+// 	const response = await fetch(`http://10.10.25.169:8055/graphql`, {
+// 	  headers: {'content-type': 'application/json'},
+// 	  method: 'POST',
+// 	  body: query,
+// 	});
+  
+// 	const responseJson = await response.json();
+// 	return responseJson.data;
+//   };
+
+
+// Setup a GraphQL client to use the endpoint
+
+
+
+
+
+//@ts-ignore
 export default function ContactForm() {
+	// const createContact = useMutation((newUser) => {
+	// 	setData(createNewUser, { data: newUser }, '/system').then((response) => {
+	// 	  console.log(response);
+	// 	});
+	//   });
+	
+	//   const handleSubmit = (e) => {
+	// 	e.preventDefault();
+	
+	// 	console.log(e.target.password.value);
+	
+	// 	signUpMutation.mutate({
+	// 	  email: e.target.email.value,
+	// 	  password: e.target.password.value,
+	// 	  role: '49645f56-c6ec-434d-ae13-091c545d00f2',
+	// 	  status: 'active',
+	// 	  provider: '',
+	// 	})
+	
+	//   }
 
-   
+	// const client = new client("http://10.10.25.169:8055/graphql");
 
-  return (
-    <div className="mx-auto">
-				<h2 className="text-blue mx-auto text-center text-5xl font-bold my-20">
-					Contact us form
-				</h2>
-                <div className="min-h-full flex items-center justify-center py-2 px-4 sm:px-6 lg:px-8">
+
+// Now, send your query as a string (Note that ` is used to create a multi-line
+// string in javascript).
+
+// client.query(`
+//   query {
+//     user {
+//       id
+//       name
+//     }
+//   }`);
+//   console.log(client);
+
+
+
+	return (
+		<div className="mx-auto">
+			<h2 className="text-blue mx-auto text-center text-5xl font-bold my-20">
+				Contact us form
+			</h2>
+			<div className="min-h-full flex items-center justify-center py-2 px-4 sm:px-6 lg:px-8">
 				<div className="max-w-md w-full space-y-8">
 					<form className="mt-8 space-y-6" noValidate onSubmit={(e) => handleSubmit(e)}>
 						<div className="rounded-md shadow-sm -space-y-px">
@@ -35,7 +101,7 @@ export default function ContactForm() {
 									placeholder="Email address"
 								/>
 							</div>
-                            <div>
+							<div>
 								<label htmlFor="name" className="sr-only">
 									Name
 								</label>
@@ -49,7 +115,7 @@ export default function ContactForm() {
 									placeholder="Name"
 								/>
 							</div>
-                            <div>
+							<div>
 								<label htmlFor="subject" className="sr-only">
 									subject
 								</label>
@@ -63,7 +129,7 @@ export default function ContactForm() {
 									placeholder="Subject"
 								/>
 							</div>
-                            <div>
+							<div>
 								<label htmlFor="message" className="sr-only">
 									Message
 								</label>
@@ -90,7 +156,7 @@ export default function ContactForm() {
 					</form>
 				</div>
 			</div>
-	</div>
-    
-  );
+		</div>
+
+	);
 }
