@@ -2,6 +2,7 @@ import ContentBlock from "@/components/ContentBlock";
 import Hero from "@/components/Hero";
 import { Metadata } from "next";
 import directus from "../lib/directus";
+import BlogCard from "@/components/BlogCard";
 
 export const metadata: Metadata = {
 	title: "Services Page",
@@ -13,6 +14,14 @@ async function getData(){ // this uses graphql api to retrive data for this page
 	  //@ts-ignore
 	return data.Services; // the data we need is nested within ({x:{}}) so this call will just send the data needed (x:{})
   }
+
+
+
+
+
+
+
+
 
 // `app/dashboard/page.tsx` is the UI for the `/dashboard` URL
 export default async function Page() {
@@ -28,6 +37,7 @@ export default async function Page() {
     {/* Use props to render content on left or right  */}
 			<ContentBlock srcImage={x} textLeft={data.isLeft} textInput={data.body}/>
 
+			
 		</>
 	);
 }
