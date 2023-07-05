@@ -1,17 +1,18 @@
 import directus from '../lib/directus';
 import { notFound } from 'next/navigation';
 
-async function getPage(slug) {
+
+async function getPage(slug : any) {
 	try {
-		const page = await directus.items('pages').readOne(slug);
+		const page : any = await directus.items('pages').readOne(slug);
 		return page;
 	} catch (error) {
 		notFound();
 	}
 }
 
-export default async function DynamicPage({ params }) {
-	const page = await getPage(params.slug);
+export default async function DynamicPage({ params } : any) {
+	const page : any = await getPage(params.slug);
 	return (
 		<div>
 			<h1>{page.title}</h1>

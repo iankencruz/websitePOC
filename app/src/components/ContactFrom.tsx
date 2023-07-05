@@ -1,7 +1,7 @@
 'use client'
 import directus from "@/app/lib/directus";
 
-async function handleSubmit(e){
+async function handleSubmit(e : any){
     e.preventDefault(); 
 	console.log("hello there");
     const { data } =  await directus.graphql.items('mutation{create_ContactUs_item(data:{name: "ff", email: "gg@tt.com", number : "4546", subject :"higg", message: "gg this work1"})}');

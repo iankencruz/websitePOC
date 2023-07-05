@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
-import NavBar from '../components/Navbar.tsx'
-import Footer from '../components/Footer.tsx'
+import NavBar from '../components/Navbar';
+import Footer from '../components/Footer';
 
 //import tailwind global css 
 import './globals.css'
