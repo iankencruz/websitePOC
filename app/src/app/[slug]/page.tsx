@@ -1,7 +1,8 @@
+import { ID } from '@directus/sdk';
 import directus from '../lib/directus';
 import { notFound } from 'next/navigation';
 
-async function getPage(slug) {
+async function getPage(slug: ID) {
 	try {
 		const page = await directus.items('pages').readOne(slug);
 		return page;
