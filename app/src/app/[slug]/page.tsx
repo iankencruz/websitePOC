@@ -1,3 +1,4 @@
+import { ID } from '@directus/sdk';
 import directus from '../lib/directus';
 import { notFound } from 'next/navigation';
 
