@@ -2,17 +2,13 @@
 import directus from "@/app/lib/directus";
 import { useMutation } from "react-query";
 
-
-//@ts-ignore
-async function handleSubmit(e) {
-	e.preventDefault();
-	// const contact = directus.items('Contact');
-	const contact = directus.graphql.items('mutation{create_ContactForm_item(data:{name: "ff", email: "gg@tt.com", number : "4546", subject :"higg", message: "gg this work1})}');
+async function handleSubmit(e : any){
+    e.preventDefault(); 
 	console.log("hello there");
-	// const { data } = directus.graphql.items('mutation{create_ContactForm_item(data:{name: "ff", email: "gg@tt.com", number : "4546", subject :"higg", message: "gg this work1})}');
-	// console.log(data);
+	const { data } : any = directus.graphql.items('mutation{create_ContactForm_item(data:{name: "ff", email: "gg@tt.com", number : "4546", subject :"higg", message: "gg this work1})}');
+	console.log(data);
 	// const a = await contact.readOne(1);
-	console.log(contact);
+	// console.log(contact);
 }
 
 // const setData = async (mutation, data = {}, additionalPath = '') => {

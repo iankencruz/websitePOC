@@ -1,9 +1,9 @@
 import directus from "@/app/lib/directus";
 import { notFound } from "next/navigation";
 
-async function getPost(slug) {
+async function getPost(slug : any) {
 	try {
-		const post = await directus.items("posts").readOne(slug, {
+		const post : any = await directus.items("posts").readOne(slug, {
 			fields: ["*.*"],
 		});
 		return post;
@@ -12,8 +12,8 @@ async function getPost(slug) {
 	}
 }
 
-export default async function DynamicPage({ params }) {
-	const post = await getPost(params.slug);
+export default async function DynamicPage({ params } : any) {
+	const post : any = await getPost(params.slug);
 	return (
 		<>
 			<div className="flex flex-wrap w-full h-full">

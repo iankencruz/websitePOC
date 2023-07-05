@@ -17,12 +17,6 @@ async function getData(){ // this uses graphql api to retrive data for this page
 
 
 
-
-
-
-
-
-
 // `app/dashboard/page.tsx` is the UI for the `/dashboard` URL
 export default async function Page() {
 	const data = await getData();
@@ -37,7 +31,6 @@ export default async function Page() {
     {/* Use props to render content on left or right  */}
 			<ContentBlock srcImage={x} textLeft={data.isLeft} textInput={data.body}/>
 
-			
 		</>
 	);
 }

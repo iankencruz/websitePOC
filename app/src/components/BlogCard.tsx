@@ -21,7 +21,7 @@ export default function BlogCard(props: BlogProp) {
                     <div className="my-auto mx-auto text-center pt-10">
                         <h2>{props.title}</h2>
                         <h3>{props.slug}</h3>
-                        <h4>{toString(props.publish_date)}</h4>
+                        <h4>{props.publish_date.toString()}</h4>
                         <div className="py-20">
                             <Link href={props.slug}> <button className="bg-blue-500 w-32 h-12 ">Read More</button></Link>
                         </div>
