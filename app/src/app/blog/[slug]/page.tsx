@@ -19,8 +19,8 @@ export default async function DynamicPage({ params } : any) {
 			<div className="flex flex-wrap w-full h-full">
 				<div className="container mx-auto w-1/2 text-left">
 					<img
-                        className="mx-auto mb-10 bg-cover"
-						src={`${directus.url}assets/${post.image.filename_disk}?width=600`}
+                        className="mx-auto my-10 bg-cover"
+						src={`${directus.url}assets/${post.hero.filename_disk}?width=600`}
 						alt=""
                         width={1080}
 					/>

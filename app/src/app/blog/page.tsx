@@ -19,27 +19,34 @@ type d = {
 	},
 };
 async function getPosts(){
-	const { data } : any = await directus.graphql.items('query{posts{slug title publish_date author{name}}}');
+	const { data } : any = await directus.graphql.items('query{posts(sort:["-publish_date"]){slug title publish_date hero{id} author{name}}}');
+	//@ts-ignore
 	return data.posts
 }
 // NEEED TO RESEARCH INTO MAP AND HOW IT WORKS FOR SET TYPES!!
 //@ts-ignore
 export default async function DynamicPage() {
 	const posts : any = await getPosts();
-	// console.log(posts);
+
+	let x = "" + directus.url + "assets/";
+
+	
+
 	return (
 		<div className="py-10 mx-auto justify-items-center">
 			<ul>
 				{posts.map((post : any) => {
 					return (
-						<div className="py-10 mx-auto  ">
+						<div className="py-10 mx-auto container flex justify-center ">
                             <li key={post.slug}>
                                 <a href={`/blog/${post.slug}`}>
-                                    <h2>{post.title}</h2>
-                                </a>
+								<img src={x + post.hero.id} alt="sadw" height={512} width={512} />
+                                    <h2 className="text-3xl">{post.title}</h2>
                                 <span>
                                     {post.publish_date}
                                 </span>
+                                </a>
+								
                             </li>
                         </div>
 					);
