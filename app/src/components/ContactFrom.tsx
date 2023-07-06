@@ -1,79 +1,27 @@
 'use client'
 import directus from "@/app/lib/directus";
+import { useState } from "react";
 import { useMutation } from "react-query";
-
-async function handleSubmit(e : any){
-    e.preventDefault(); 
-	console.log("hello there");
-	const { data } : any = directus.graphql.items('mutation{create_ContactForm_item(data:{name: "ff", email: "gg@tt.com", number : "4546", subject :"higg", message: "gg this work1})}');
-	console.log(data);
-	// const a = await contact.readOne(1);
-	// console.log(contact);
-}
-
-// const setData = async (mutation, data = {}, additionalPath = '') => {
-// 	const query = JSON.stringify({
-// 	  query: mutation,
-// 	  variables: data
-// 	});
-  
-// 	const response = await fetch(`http://10.10.25.169:8055/graphql`, {
-// 	  headers: {'content-type': 'application/json'},
-// 	  method: 'POST',
-// 	  body: query,
-// 	});
-  
-// 	const responseJson = await response.json();
-// 	return responseJson.data;
-//   };
-
-
-// Setup a GraphQL client to use the endpoint
-
-
-
-
 
 //@ts-ignore
 export default function ContactForm() {
-	// const createContact = useMutation((newUser) => {
-	// 	setData(createNewUser, { data: newUser }, '/system').then((response) => {
-	// 	  console.log(response);
-	// 	});
-	//   });
-	
-	//   const handleSubmit = (e) => {
-	// 	e.preventDefault();
-	
-	// 	console.log(e.target.password.value);
-	
-	// 	signUpMutation.mutate({
-	// 	  email: e.target.email.value,
-	// 	  password: e.target.password.value,
-	// 	  role: '49645f56-c6ec-434d-ae13-091c545d00f2',
-	// 	  status: 'active',
-	// 	  provider: '',
-	// 	})
-	
-	//   }
-
-	// const client = new client("http://10.10.25.169:8055/graphql");
 
 
-// Now, send your query as a string (Note that ` is used to create a multi-line
-// string in javascript).
+	const [name, setName] = useState('');
+	const [email, setEmail] = useState('');
+	const [number, setNum] = useState('');
+	const [subject, setSub] = useState('');
+	const [message, setMessage] = useState('');
 
-// client.query(`
-//   query {
-//     user {
-//       id
-//       name
-//     }
-//   }`);
-//   console.log(client);
-
-
-
+	async function handleSubmit(e: any) {
+		e.preventDefault();
+		console.log("hello there");
+		const query = 'mutation{create_ContactForm_item(data:{name: "' + name+ '", email: "'+email+'", number : "'+number+'", subject :"'+subject+'", message: "'+message+'"})}';
+		const { data }: any = directus.graphql.items(query);
+		console.log(data);
+		// const a = await contact.readOne(1);
+		// console.log(contact);
+	}
 	return (
 		<div className="mx-auto">
 			<h2 className="text-blue mx-auto text-center text-5xl font-bold my-20">
@@ -88,13 +36,15 @@ export default function ContactForm() {
 									Email address
 								</label>
 								<input
-									id="email-address"
-									name="email"
+									// id="email-address"
+									// name="email"
 									type="email"
-									autoComplete="email"
+									// autoComplete="email"
 									required
 									className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
 									placeholder="Email address"
+									value={email}
+									onChange={(e) => setEmail(e.target.value)}
 								/>
 							</div>
 							<div>
@@ -102,13 +52,31 @@ export default function ContactForm() {
 									Name
 								</label>
 								<input
-									id="name"
-									name="name"
+									// id="name"
+									// name="name"
 									type="name"
-									autoComplete="user-name"
+									// autoComplete="user-name"
 									required
 									className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
 									placeholder="Name"
+									value={name}
+									onChange={(e) => setName(e.target.value)}
+								/>
+							</div>
+							<div>
+								<label htmlFor="number" className="sr-only">
+									Number
+								</label>
+								<input
+									// id="name"
+									// name="name"
+									type="number"
+									// autoComplete="user-name"
+									required
+									className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+									placeholder="Number"
+									value={number}
+									onChange={(e) => setNum(e.target.value)}
 								/>
 							</div>
 							<div>
@@ -116,13 +84,15 @@ export default function ContactForm() {
 									subject
 								</label>
 								<input
-									id="subject"
+									// id="subject"
 									name="subject"
-									type="subject"
-									autoComplete="current-subject"
+									// type="subject"
+									// autoComplete="current-subject"
 									required
 									className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
 									placeholder="Subject"
+									value={subject}
+									onChange={(e) => setSub(e.target.value)}
 								/>
 							</div>
 							<div>
@@ -130,13 +100,15 @@ export default function ContactForm() {
 									Message
 								</label>
 								<input
-									id="message"
-									name="message"
+									// id="message"
+									// name="message"
 									type="message"
-									autoComplete="current-message"
+									// autoComplete="current-message"
 									required
 									className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
 									placeholder="Message"
+									value={message}
+									onChange={(e) => setMessage(e.target.value)}
 								/>
 							</div>
 						</div>
