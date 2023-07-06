@@ -1,6 +1,8 @@
 import directus from "./lib/directus"
 import ContentBlock from '@/components/ContentBlock'
 import Hero from '@/components/Hero'
+import TestAni from "@/components/TestAni";
+
 
 
 // async function getD(){ // this uses the default api
@@ -8,9 +10,11 @@ import Hero from '@/components/Hero'
 // 	return data;
 // }
 async function getData(){ // this uses graphql api to retrive data for this page
-  const { data } = await directus.graphql.items('query{Home{isLeft title body hero{id}}}');
+  const { data } = await directus.graphql.items('query{Home{isLeft title body bodytext hero{id}}}');
 	//@ts-ignore
+  console.log(data);
   return data.Home; // the data we need is nested within ({x:{}}) so this call will just send the data needed (x:{})
+  
 }
 // let title = "tesdast"
 // let body = "yolo"
@@ -36,6 +40,8 @@ export default async function Home() {
     <main>
       
       <Hero title={data.title} />
+      <TestAni></TestAni>
+      
 
     {/* Use props to render content on left or right  */}
       <ContentBlock srcImage={x} textLeft={data.isLeft} textInput={data.body}/>
