@@ -31,8 +31,6 @@ export default async function Page() {
 			</h1>
 			<Hero title={data.title} />
 
-			{/* Use props to render content on left or right  */}
-			<ContentBlock srcImage={x} textLeft={data.isLeft} textInput={data.body} />
 			<ContactForm></ContactForm>
 
 

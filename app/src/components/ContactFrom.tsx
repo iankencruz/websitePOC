@@ -138,7 +138,7 @@ export  default async function ContactForm() {
 					</form>
 				</div>
 			</div>
-			<a href={x} target="_blank" download>Download pdf</a>
+			<div className="flex mx-auto justify-items-center my-20"><a className="mx-auto w-40 bg-blue-400  p-5 w-full text-center " href={x} target="_blank" download>Brochure</a></div>
 		</div>
 
 	);

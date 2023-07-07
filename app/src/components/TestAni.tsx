@@ -2,11 +2,11 @@
 import { motion } from "framer-motion";
 export default function TestAni() {
     return (
-        <div className="bg-black grid grid cols-2 gap -4 place-content-center">
+        <div className="bg-black mx-auto justify-center columns-2 gap- place-content-center">
         <motion.div
             className="w-52 h-52 bg-white"
             animate={{
-                scale: [1, 2, 2, 1, 1],
+                scale: [0.6, 0.6, 0.6, 0.6, 0.6],
                 rotate: [0, 0, 180, 180, 0],
                 borderRadius: ["0%", "0%", "50%", "50%", "0%"]
             }}
@@ -21,7 +21,7 @@ export default function TestAni() {
         <motion.div
             className="w-52 h-52 bg-pink-700"
             animate={{
-                scale: [1, 2, 2, 1, 1],
+                scale: [0.6, 0.6, 0.6, 0.6, 0.6],
                 rotate: [0, 0, 180, 180, 0],
                 borderRadius: ["0%", "0%", "50%", "50%", "0%"]
             }}
