@@ -3,8 +3,18 @@ import directus from "@/app/lib/directus";
 import { useState } from "react";
 import { useMutation } from "react-query";
 
+
+
+async function getData() { // this uses graphql api to retrive data for this page
+	const { data } = await directus.graphql.items('query{Contact{file{id}}}');
+	//@ts-ignore
+	// console.log(data);
+	return data.Contact; // the data we need is nested within ({x:{}}) so this call will just send the data needed (x:{})
+}
+
+
 //@ts-ignore
-export default function ContactForm() {
+export  default async function ContactForm() {
 
 
 	const [name, setName] = useState('');
@@ -12,6 +22,10 @@ export default function ContactForm() {
 	const [number, setNum] = useState('');
 	const [subject, setSub] = useState('');
 	const [message, setMessage] = useState('');
+	const file = await getData();
+	// console.log(file.file.id);
+	let x = "" + directus.url + "assets/" + file.file.id;
+	console.log(x);
 
 	async function handleSubmit(e: any) {
 		e.preventDefault();
@@ -124,6 +138,7 @@ export default function ContactForm() {
 					</form>
 				</div>
 			</div>
+			<a href={x} target="_blank" download>Download pdf</a>
 		</div>
 
 	);
